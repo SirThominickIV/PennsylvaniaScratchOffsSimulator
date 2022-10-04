@@ -26,7 +26,8 @@ namespace PennsylvaniaScratchOffsSimulator
             InitializeComponent();
         }
 
-        public void AddSomeScratchData() //Data input for a couple scratch offs - Normally should be done with a .txt or .xml file, but this is just a demo
+        //Data input for a couple scratch offs - TODO: Read these tickets from a .json or something similar
+        public void AddSomeScratchData() 
         {
             ScratchOff FiveTimesTheMoney = new ScratchOff("5X THE MONEY", 5, "https://www.palottery.state.pa.us/uploadedfiles/PA-1437_5X-the-Money_DATA.pdf");
             FiveTimesTheMoney.PayoutsList.Add(new Payout(5, 9));
@@ -74,7 +75,8 @@ namespace PennsylvaniaScratchOffsSimulator
             ScratchOffs.Add(ThreeMillionLimited);
         }
 
-        private void cb_List_SelectedIndexChanged(object sender, EventArgs e) //Updating which scratch off is selected from the drop down
+        //Updating which scratch off is selected from the drop down
+        private void cb_List_SelectedIndexChanged(object sender, EventArgs e) 
         {
             foreach (ScratchOff scratchOff in ScratchOffs)
             {
@@ -83,7 +85,8 @@ namespace PennsylvaniaScratchOffsSimulator
             UpdateStatsDisplay();
         }
 
-        public void UpdateStatsDisplay()    //Updating the display for the selected scratch off's stats
+        //Updating the display for the selected scratch off's stats
+        public void UpdateStatsDisplay()    
         {
             rtb_Stats.Clear();
 
@@ -106,7 +109,8 @@ namespace PennsylvaniaScratchOffsSimulator
             }
         }
 
-        private void btn_Buy_Click(object sender, EventArgs e)  //Button for buying a ticket
+        //Button for buying a ticket
+        private void btn_Buy_Click(object sender, EventArgs e)  
         {
             if (SelectedScratchOff != null)
             {              
@@ -154,7 +158,8 @@ namespace PennsylvaniaScratchOffsSimulator
             else rtb_Output.Text += "Error - You need to select a ticket type in the left hand corner drop down." + System.Environment.NewLine;
         }
 
-        public class ScratchOff //The scratch offs class, for keeping track of each of the types of scratch offs
+        //The scratch offs class, for keeping track of each of the types of scratch offs
+        public class ScratchOff 
         {
             public string Name;    //The name of the scratch off
             public int Price;      //The price to buy this scratch off
@@ -169,7 +174,8 @@ namespace PennsylvaniaScratchOffsSimulator
             }
         }
 
-        public class Payout //The possible payouts a scratch off could have
+        //The possible payouts a scratch off could have
+        public class Payout 
         {
             public int PayoutAmmount;  //The amount that gets payed if won
             public int Chances;        //The chances of winning. For example, if this int is set to 100, then the chances of winning
@@ -182,7 +188,8 @@ namespace PennsylvaniaScratchOffsSimulator
             }
         }
 
-        private void rtb_Output_TextChanged(object sender, EventArgs e) //Auto scrolls the output text box to the bottom
+        //Auto scrolls the output text box to the bottom
+        private void rtb_Output_TextChanged(object sender, EventArgs e) 
         {
             rtb_Output.SelectionStart = rtb_Output.Text.Length;
             rtb_Output.ScrollToCaret();
